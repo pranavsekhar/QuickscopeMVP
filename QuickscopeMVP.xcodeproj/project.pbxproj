@@ -8,20 +8,50 @@
 
 /* Begin PBXBuildFile section */
 		4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCF92253E9AA004A03B5 /* AppDelegate.swift */; };
-		4795CCFC2253E9AA004A03B5 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCFB2253E9AA004A03B5 /* ViewController.swift */; };
+		4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */; };
 		4795CCFF2253E9AA004A03B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4795CCFD2253E9AA004A03B5 /* Main.storyboard */; };
 		4795CD012253E9AB004A03B5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD002253E9AB004A03B5 /* Assets.xcassets */; };
 		4795CD042253E9AB004A03B5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD022253E9AB004A03B5 /* LaunchScreen.storyboard */; };
+		4795CD0C2253F1F0004A03B5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD0B2253F1F0004A03B5 /* GoogleService-Info.plist */; };
+		4795CD2D225546F5004A03B5 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD23225546F4004A03B5 /* OpenSans-ExtraBoldItalic.ttf */; };
+		4795CD2E225546F5004A03B5 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD24225546F4004A03B5 /* OpenSans-Italic.ttf */; };
+		4795CD2F225546F5004A03B5 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD25225546F5004A03B5 /* OpenSans-Light.ttf */; };
+		4795CD30225546F5004A03B5 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD26225546F5004A03B5 /* OpenSans-BoldItalic.ttf */; };
+		4795CD31225546F5004A03B5 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD27225546F5004A03B5 /* OpenSans-LightItalic.ttf */; };
+		4795CD32225546F5004A03B5 /* OpenSans-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD28225546F5004A03B5 /* OpenSans-SemiBold.ttf */; };
+		4795CD33225546F5004A03B5 /* OpenSans-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD29225546F5004A03B5 /* OpenSans-SemiBoldItalic.ttf */; };
+		4795CD34225546F5004A03B5 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD2A225546F5004A03B5 /* OpenSans-ExtraBold.ttf */; };
+		4795CD35225546F5004A03B5 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD2B225546F5004A03B5 /* OpenSans-Bold.ttf */; };
+		4795CD36225546F5004A03B5 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4795CD2C225546F5004A03B5 /* OpenSans-Regular.ttf */; };
+		4795CD382255613D004A03B5 /* RegisterAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CD372255613D004A03B5 /* RegisterAccountViewController.swift */; };
+		4795CD3A225570C9004A03B5 /* RootNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CD39225570C9004A03B5 /* RootNavigationViewController.swift */; };
+		65000296E43EDB892212A829 /* Pods_QuickscopeMVP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E29A912D00C0B63144DB8C92 /* Pods_QuickscopeMVP.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2157AFEF1B417A22C5A3D3B3 /* Pods-QuickscopeMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickscopeMVP.release.xcconfig"; path = "Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP.release.xcconfig"; sourceTree = "<group>"; };
 		4795CCF62253E9AA004A03B5 /* QuickscopeMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickscopeMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4795CCF92253E9AA004A03B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4795CCFB2253E9AA004A03B5 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		4795CCFE2253E9AA004A03B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		4795CD002253E9AB004A03B5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4795CD032253E9AB004A03B5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4795CD052253E9AB004A03B5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4795CD0B2253F1F0004A03B5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		4795CD23225546F4004A03B5 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4795CD24225546F4004A03B5 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		4795CD25225546F5004A03B5 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		4795CD26225546F5004A03B5 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4795CD27225546F5004A03B5 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		4795CD28225546F5004A03B5 /* OpenSans-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBold.ttf"; sourceTree = "<group>"; };
+		4795CD29225546F5004A03B5 /* OpenSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		4795CD2A225546F5004A03B5 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4795CD2B225546F5004A03B5 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		4795CD2C225546F5004A03B5 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		4795CD372255613D004A03B5 /* RegisterAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterAccountViewController.swift; sourceTree = "<group>"; };
+		4795CD39225570C9004A03B5 /* RootNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootNavigationViewController.swift; sourceTree = "<group>"; };
+		E29A912D00C0B63144DB8C92 /* Pods_QuickscopeMVP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_QuickscopeMVP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF3FFF471ACF679AA6647E51 /* Pods-QuickscopeMVP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickscopeMVP.debug.xcconfig"; path = "Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65000296E43EDB892212A829 /* Pods_QuickscopeMVP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +71,8 @@
 			children = (
 				4795CCF82253E9AA004A03B5 /* QuickscopeMVP */,
 				4795CCF72253E9AA004A03B5 /* Products */,
+				65FEF620D09241397A1CE1F0 /* Pods */,
+				76AAC67D6988E33956935C82 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +88,51 @@
 			isa = PBXGroup;
 			children = (
 				4795CCF92253E9AA004A03B5 /* AppDelegate.swift */,
-				4795CCFB2253E9AA004A03B5 /* ViewController.swift */,
+				4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */,
 				4795CCFD2253E9AA004A03B5 /* Main.storyboard */,
+				4795CD39225570C9004A03B5 /* RootNavigationViewController.swift */,
+				4795CD372255613D004A03B5 /* RegisterAccountViewController.swift */,
 				4795CD002253E9AB004A03B5 /* Assets.xcassets */,
 				4795CD022253E9AB004A03B5 /* LaunchScreen.storyboard */,
+				4795CD0B2253F1F0004A03B5 /* GoogleService-Info.plist */,
 				4795CD052253E9AB004A03B5 /* Info.plist */,
+				4795CD22225546E8004A03B5 /* Fonts */,
 			);
 			path = QuickscopeMVP;
+			sourceTree = "<group>";
+		};
+		4795CD22225546E8004A03B5 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4795CD2B225546F5004A03B5 /* OpenSans-Bold.ttf */,
+				4795CD26225546F5004A03B5 /* OpenSans-BoldItalic.ttf */,
+				4795CD2A225546F5004A03B5 /* OpenSans-ExtraBold.ttf */,
+				4795CD23225546F4004A03B5 /* OpenSans-ExtraBoldItalic.ttf */,
+				4795CD24225546F4004A03B5 /* OpenSans-Italic.ttf */,
+				4795CD25225546F5004A03B5 /* OpenSans-Light.ttf */,
+				4795CD27225546F5004A03B5 /* OpenSans-LightItalic.ttf */,
+				4795CD2C225546F5004A03B5 /* OpenSans-Regular.ttf */,
+				4795CD28225546F5004A03B5 /* OpenSans-SemiBold.ttf */,
+				4795CD29225546F5004A03B5 /* OpenSans-SemiBoldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		65FEF620D09241397A1CE1F0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FF3FFF471ACF679AA6647E51 /* Pods-QuickscopeMVP.debug.xcconfig */,
+				2157AFEF1B417A22C5A3D3B3 /* Pods-QuickscopeMVP.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		76AAC67D6988E33956935C82 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E29A912D00C0B63144DB8C92 /* Pods_QuickscopeMVP.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +142,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4795CD082253E9AB004A03B5 /* Build configuration list for PBXNativeTarget "QuickscopeMVP" */;
 			buildPhases = (
+				FBF2A2D538ACDB269CA515DE /* [CP] Check Pods Manifest.lock */,
 				4795CCF22253E9A9004A03B5 /* Sources */,
 				4795CCF32253E9A9004A03B5 /* Frameworks */,
 				4795CCF42253E9A9004A03B5 /* Resources */,
+				BBB2E1B7AB1BAF1F2CE2E3DD /* [CP] Embed Pods Frameworks */,
+				456AF2F1AD41E16ED061800C /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -123,20 +197,106 @@
 			buildActionMask = 2147483647;
 			files = (
 				4795CD042253E9AB004A03B5 /* LaunchScreen.storyboard in Resources */,
+				4795CD0C2253F1F0004A03B5 /* GoogleService-Info.plist in Resources */,
+				4795CD32225546F5004A03B5 /* OpenSans-SemiBold.ttf in Resources */,
+				4795CD2F225546F5004A03B5 /* OpenSans-Light.ttf in Resources */,
+				4795CD2D225546F5004A03B5 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				4795CD2E225546F5004A03B5 /* OpenSans-Italic.ttf in Resources */,
 				4795CD012253E9AB004A03B5 /* Assets.xcassets in Resources */,
+				4795CD30225546F5004A03B5 /* OpenSans-BoldItalic.ttf in Resources */,
+				4795CD33225546F5004A03B5 /* OpenSans-SemiBoldItalic.ttf in Resources */,
 				4795CCFF2253E9AA004A03B5 /* Main.storyboard in Resources */,
+				4795CD36225546F5004A03B5 /* OpenSans-Regular.ttf in Resources */,
+				4795CD35225546F5004A03B5 /* OpenSans-Bold.ttf in Resources */,
+				4795CD31225546F5004A03B5 /* OpenSans-LightItalic.ttf in Resources */,
+				4795CD34225546F5004A03B5 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		456AF2F1AD41E16ED061800C /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP-resources.sh",
+				"${PODS_CONFIGURATION_BUILD_DIR}/FirebaseUI/FirebaseAuthUI.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/FirebaseAuthUI.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBB2E1B7AB1BAF1F2CE2E3DD /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FBF2A2D538ACDB269CA515DE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-QuickscopeMVP-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4795CCF22253E9A9004A03B5 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4795CCFC2253E9AA004A03B5 /* ViewController.swift in Sources */,
+				4795CD3A225570C9004A03B5 /* RootNavigationViewController.swift in Sources */,
+				4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */,
 				4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */,
+				4795CD382255613D004A03B5 /* RegisterAccountViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,6 +440,7 @@
 		};
 		4795CD092253E9AB004A03B5 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FF3FFF471ACF679AA6647E51 /* Pods-QuickscopeMVP.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -298,6 +459,7 @@
 		};
 		4795CD0A2253E9AB004A03B5 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2157AFEF1B417A22C5A3D3B3 /* Pods-QuickscopeMVP.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
