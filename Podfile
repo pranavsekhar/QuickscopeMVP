@@ -9,5 +9,6 @@ target 'QuickscopeMVP' do
 
   pod 'Firebase/Core'
   pod 'FirebaseUI/Auth'
+  pod 'SwiftTwitch'
 
 end

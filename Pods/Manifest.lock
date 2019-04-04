@@ -56,15 +56,19 @@ PODS:
   - GoogleUtilities/UserDefaults (5.3.7):
     - GoogleUtilities/Logger
   - GTMSessionFetcher/Core (1.2.1)
+  - Marshal (1.2.7)
   - nanopb (0.3.901):
     - nanopb/decode (= 0.3.901)
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - SwiftTwitch (0.1.0):
+    - Marshal (~> 1.2.7)
 
 DEPENDENCIES:
   - Firebase/Core
   - FirebaseUI/Auth
+  - SwiftTwitch
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -78,7 +82,9 @@ SPEC REPOS:
     - GoogleAppMeasurement
     - GoogleUtilities
     - GTMSessionFetcher
+    - Marshal
     - nanopb
+    - SwiftTwitch
 
 SPEC CHECKSUMS:
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
@@ -91,8 +97,10 @@ SPEC CHECKSUMS:
   GoogleAppMeasurement: 621f3bc6211d5ba548debe01fafad30cf5ab6859
   GoogleUtilities: 111a012f4c3a29c9e7c954c082fafd6ee3c999c0
   GTMSessionFetcher: 32aeca0aa144acea523e1c8e053089dec2cb98ca
+  Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  SwiftTwitch: 40957abccac5d6d40d8e047224178364ebbaf20c
 
-PODFILE CHECKSUM: 214efa983a5e62ee875f33239fb501d95a1d2936
+PODFILE CHECKSUM: cb1d60959c0224536434242b70647642163bdcbe
 
 COCOAPODS: 1.6.0
