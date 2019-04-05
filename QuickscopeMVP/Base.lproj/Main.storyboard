@@ -239,7 +239,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="xA9-lf-eVm" kind="relationship" relationship="rootViewController" id="KXx-Uv-qmO"/>
+                        <segue destination="42r-fz-ARg" kind="relationship" relationship="rootViewController" id="4ZO-St-m3A"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XOP-qd-gCV" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -247,44 +247,15 @@
             <point key="canvasLocation" x="2405.5999999999999" y="957.57121439280365"/>
         </scene>
         <!--Home Feed View Controller-->
-        <scene sceneID="CKj-8N-6Rp">
+        <scene sceneID="C8l-Da-BUI">
             <objects>
-                <tableViewController storyboardIdentifier="HomeFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xA9-lf-eVm" customClass="HomeFeedViewController" customModule="QuickscopeMVP" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="JjX-kq-2V4">
+                <tableViewController storyboardIdentifier="HomeFeedViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="42r-fz-ARg" customClass="HomeFeedViewController" customModule="QuickscopeMVP" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wlv-z0-Vh0">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="WFg-mM-ZCM">
-                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="WFg-mM-ZCM" id="sfB-i0-7Gm">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="xA9-lf-eVm" id="t3g-G9-aYf"/>
-                            <outlet property="delegate" destination="xA9-lf-eVm" id="6OC-YX-0YP"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Tdy-Ee-dwk"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Eb-w6-xnI" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3207" y="958"/>
-        </scene>
-        <!--Twitch Videos-->
-        <scene sceneID="C8l-Da-BUI">
-            <objects>
-                <tableViewController id="42r-fz-ARg" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="wlv-z0-Vh0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="twitchyCell" id="Nb4-6y-RIn" customClass="TwitchVideoTableViewCell" customModule="SwiftTwitch_Example" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ClipCell" id="Nb4-6y-RIn" customClass="TwitchClipTableViewCell" customModule="SwiftTwitch_Example" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="80"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nb4-6y-RIn" id="4dX-8B-k08">
@@ -352,9 +323,9 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="titleLabel" destination="MiP-vx-2Le" id="EBd-AE-Vkv"/>
+                                    <outlet property="titleLabel" destination="MiP-vx-2Le" id="sG6-Bk-att"/>
                                     <outlet property="userLabel" destination="Gjm-XW-ui5" id="vuO-SF-azB"/>
-                                    <outlet property="videoThumbnailImageView" destination="Oac-En-eWa" id="dhW-gX-URM"/>
+                                    <outlet property="videoThumbnailImageView" destination="Oac-En-eWa" id="pdP-Q7-9EM"/>
                                     <outlet property="viewLabel" destination="NIY-fs-D4M" id="o8d-KE-jda"/>
                                 </connections>
                             </tableViewCell>
@@ -364,11 +335,11 @@
                             <outlet property="delegate" destination="42r-fz-ARg" id="LkI-iW-25M"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Twitch Videos" id="psP-sa-wfb"/>
+                    <navigationItem key="navigationItem" id="psP-sa-wfb"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nOx-LP-5du" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3999" y="958"/>
+            <point key="canvasLocation" x="3340" y="958"/>
         </scene>
     </scenes>
     <resources>

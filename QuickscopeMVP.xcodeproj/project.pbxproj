@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		471FDB812256C3E300F85CAA /* HomeFeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471FDB802256C3E300F85CAA /* HomeFeedViewController.swift */; };
+		471FDB872256CFC600F85CAA /* TwitchClipTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471FDB862256CFC600F85CAA /* TwitchClipTableViewCell.swift */; };
 		4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCF92253E9AA004A03B5 /* AppDelegate.swift */; };
 		4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */; };
 		4795CCFF2253E9AA004A03B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4795CCFD2253E9AA004A03B5 /* Main.storyboard */; };
@@ -32,6 +33,7 @@
 /* Begin PBXFileReference section */
 		2157AFEF1B417A22C5A3D3B3 /* Pods-QuickscopeMVP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-QuickscopeMVP.release.xcconfig"; path = "Target Support Files/Pods-QuickscopeMVP/Pods-QuickscopeMVP.release.xcconfig"; sourceTree = "<group>"; };
 		471FDB802256C3E300F85CAA /* HomeFeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeFeedViewController.swift; sourceTree = "<group>"; };
+		471FDB862256CFC600F85CAA /* TwitchClipTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchClipTableViewCell.swift; sourceTree = "<group>"; };
 		4795CCF62253E9AA004A03B5 /* QuickscopeMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickscopeMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4795CCF92253E9AA004A03B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				4795CD022253E9AB004A03B5 /* LaunchScreen.storyboard */,
 				4795CD0B2253F1F0004A03B5 /* GoogleService-Info.plist */,
 				4795CD052253E9AB004A03B5 /* Info.plist */,
+				471FDB862256CFC600F85CAA /* TwitchClipTableViewCell.swift */,
 				4795CD22225546E8004A03B5 /* Fonts */,
 			);
 			path = QuickscopeMVP;
@@ -304,6 +307,7 @@
 				4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */,
 				4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */,
 				4795CD382255613D004A03B5 /* RegisterAccountViewController.swift in Sources */,
+				471FDB872256CFC600F85CAA /* TwitchClipTableViewCell.swift in Sources */,
 				471FDB812256C3E300F85CAA /* HomeFeedViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
