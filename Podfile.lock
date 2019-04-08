@@ -64,11 +64,13 @@ PODS:
   - nanopb/encode (0.3.901)
   - SwiftTwitch (0.1.0):
     - Marshal (~> 1.2.7)
+  - TwitchPlayer (0.1.1)
 
 DEPENDENCIES:
   - Firebase/Core
   - FirebaseUI/Auth
   - SwiftTwitch
+  - TwitchPlayer
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -85,6 +87,7 @@ SPEC REPOS:
     - Marshal
     - nanopb
     - SwiftTwitch
+    - TwitchPlayer
 
 SPEC CHECKSUMS:
   Firebase: 749a8ff4962f9d8c79dda1966de20f6f77583d67
@@ -100,7 +103,8 @@ SPEC CHECKSUMS:
   Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
   SwiftTwitch: 40957abccac5d6d40d8e047224178364ebbaf20c
+  TwitchPlayer: 8cc661c62aca88f7a2a4cecfca6bf71ea06a4e7d
 
-PODFILE CHECKSUM: cb1d60959c0224536434242b70647642163bdcbe
+PODFILE CHECKSUM: 74c751b42983f9058ac44567d4d72ef5707491e8
 
 COCOAPODS: 1.6.0

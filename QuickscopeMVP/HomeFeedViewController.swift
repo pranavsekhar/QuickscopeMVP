@@ -34,11 +34,18 @@ class HomeFeedViewController: UITableViewController {
         imageView.image = image
         navigationItem.titleView = imageView
         
+        self.tableView.backgroundView = UIImageView(image: UIImage(named: "DarkBG")!)
+        
         // Twitch Clips Integration:
         
         TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
         
-        Twitch.Clips.getClips(broadcasterId: "19571641", gameId: nil, clipIds: nil) {
+        let startedAtDate = Calendar.current.date(
+            byAdding: .hour,
+            value: -48,
+            to: Date())
+        
+        Twitch.Clips.getClips(broadcasterId: nil, gameId: "32399", clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 10) { //19571641
             switch $0 {
             case .success(let getVideosData):
                 self.clips = getVideosData.clipData
@@ -56,7 +63,6 @@ class HomeFeedViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         return clips.count
     }
     
@@ -65,8 +71,7 @@ class HomeFeedViewController: UITableViewController {
         UIApplication.shared.openURL(videoData.clipURL)
     }
     
-    /// Retrieve a TwitchClipTableViewCell with the reuse identifier "twitchyCell". Its video data
-    /// should be set to the video at the index path specified.
+    /// Retrieve a TwitchClipTableViewCell with the reuse identifier "ClipCell"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ClipCell"),
             let clipCell = cell as? TwitchClipTableViewCell else {
@@ -75,5 +80,49 @@ class HomeFeedViewController: UITableViewController {
         clipCell.clipData = clips[indexPath.row]
         return clipCell
     }
+    
+    
+    
+//    func getClipIds (gameIds: [String], streamerIds: [String]) -> [String] {
+//
+//        let urlString = "https://api.twitch.tv/helix/clips"
+//        let parameters = ["broadcaster_id": "19571641"]
+//        let headers = ["Client-ID": "om99skbxrgssgxogal1j9kd31u2nlo"]
+//
+//        var urlComponents = URLComponents(string: urlString)
+//
+//        var queryItems = [URLQueryItem]()
+//        for (key, value) in parameters {
+//            queryItems.append(URLQueryItem(name: key, value: value))
+//        }
+//
+//        urlComponents?.queryItems = queryItems
+//
+//        var request = URLRequest(url: (urlComponents?.url)!)
+//        request.httpMethod = "GET"
+//
+//        for (key, value) in headers {
+//            request.setValue(value, forHTTPHeaderField: key)
+//        }
+//
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) -> Void in
+//            print(data)
+//
+//            guard let jsonArray = data as? [[String: Any]] else {
+//                return
+//            }
+//            print(jsonArray)
+//
+//        }
+//        task.resume()
+//
+//        return [""]
+//
+//    }
 
 }
+
+/*
+ curl --data "client_id=om99skbxrgssgxogal1j9kd31u2nlo" --data "client_secret=doew024h8nx94sshtra2s37axoiavx"  --data "grant_type=client_credentials" https://id.twitch.tv/oauth2/token
+ {"access_token":"wx5au1mej4255hr2jrldi1vtw9gzt3","expires_in":5063443,"token_type":"bearer"}
+*/

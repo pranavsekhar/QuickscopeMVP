@@ -8,13 +8,14 @@
 
 import UIKit
 import SwiftTwitch
+import TwitchPlayer
 
 class TwitchClipTableViewCell: UITableViewCell {
     
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var userLabel: UILabel!
-    @IBOutlet weak var videoThumbnailImageView: UIImageView!
     @IBOutlet weak var viewLabel: UILabel!
+    @IBOutlet weak var clipPlayer: TwitchClipPlayer!
     
     var clipData: ClipData? {
         didSet {
@@ -23,13 +24,9 @@ class TwitchClipTableViewCell: UITableViewCell {
     }
     
     public func loadVideoData() {
-        guard let videoData = clipData else {
-            videoThumbnailImageView.image = nil
-            return
-        }
         titleLabel.text = clipData?.title
         userLabel.text = clipData?.broadcasterName
-        viewLabel.text = "\(videoData.viewCount) view(s)"
+        clipPlayer.clipId = (clipData?.clipId)!
+        viewLabel.text = "\(clipData?.viewCount ?? 0) view(s)"
     }
-    
 }
