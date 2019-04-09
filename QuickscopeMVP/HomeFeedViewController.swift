@@ -45,20 +45,42 @@ class HomeFeedViewController: UITableViewController {
             value: -48,
             to: Date())
         
-        Twitch.Clips.getClips(broadcasterId: nil, gameId: "32399", clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 10) { //19571641
-            switch $0 {
-            case .success(let getVideosData):
-                self.clips = getVideosData.clipData
-            case .failure(let data, _, _):
-                print("The API call failed! Unable to get videos. Did you set an access token?")
-                if let data = data,
-                    let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                    let jsonDict = jsonObject as? [String: Any]{
-                    print(jsonDict)
+        let gameIds = ["32399", "493057"]
+        
+        for gid in gameIds {
+            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 5) { //19571641
+                switch $0 {
+                case .success(let getVideosData):
+                    self.clips += getVideosData.clipData
+                    self.clips.shuffle()
+                case .failure(let data, _, _):
+                    print("The API call failed! Unable to get videos. Did you set an access token?")
+                    if let data = data,
+                        let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                        let jsonDict = jsonObject as? [String: Any]{
+                        print(jsonDict)
+                    }
+                    self.clips = [ClipData]()
                 }
-                self.clips = [ClipData]()
+
             }
         }
+        
+        
+        
+//        Twitch.Clips.getClips(broadcasterId: nil, gameId: "32399", clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 10) { //19571641
+//            switch $0 {
+//            case .success(let getVideosData):
+//                self.clips = getVideosData.clipData
+//            case .failure(let data, _, _):
+//                print("The API call failed! Unable to get videos. Did you set an access token?")
+//                if let data = data,
+//                    let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+//                    let jsonDict = jsonObject as? [String: Any]{
+//                    print(jsonDict)
+//                }
+//                self.clips = [ClipData]()
+//            }
         
     }
 
