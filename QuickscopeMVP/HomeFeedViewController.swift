@@ -18,9 +18,20 @@ class HomeFeedViewController: UITableViewController {
             }
         }
     }
+    
+    @objc func loadNewContent() {
+        print("hello there")
+        tableView.reloadData()
+        refreshControl?.endRefreshing()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Refresh with new content
+        let refreshControl = UIRefreshControl()
+        refreshControl.addTarget(self, action:  #selector(loadNewContent), for: .valueChanged)
+        self.refreshControl = refreshControl
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -47,12 +58,15 @@ class HomeFeedViewController: UITableViewController {
         
         let gameIds = ["32399", "493057"]
         
+        var pagTok = ""
+        
         for gid in gameIds {
-            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 5) { //19571641
+            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, after: pagTok, startedAt: startedAtDate, endedAt: Date(), first: 5) { //19571641
                 switch $0 {
                 case .success(let getVideosData):
                     self.clips += getVideosData.clipData
                     self.clips.shuffle()
+                    pagTok = (getVideosData.paginationData?.token)!
                 case .failure(let data, _, _):
                     print("The API call failed! Unable to get videos. Did you set an access token?")
                     if let data = data,
@@ -62,7 +76,6 @@ class HomeFeedViewController: UITableViewController {
                     }
                     self.clips = [ClipData]()
                 }
-
             }
         }
         
@@ -90,7 +103,7 @@ class HomeFeedViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let videoData = clips[indexPath.row]
-        UIApplication.shared.openURL(videoData.clipURL)
+        //UIApplication.shared.openURL(videoData.clipURL)
     }
     
     /// Retrieve a TwitchClipTableViewCell with the reuse identifier "ClipCell"
