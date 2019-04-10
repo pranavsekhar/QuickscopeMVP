@@ -26,13 +26,6 @@ class TwitchClipTableViewCell: UITableViewCell {
         }
     }
     
-    var otherClipData: OtherClipData? {
-        didSet {
-            loadVideoData()
-        }
-    }
-    
-    
 //    override func prepareForReuse() { //prevent incorrect thumbnail images from appearing
 //        super.prepareForReuse()
 //        userProfileImage.image = nil
@@ -43,45 +36,6 @@ class TwitchClipTableViewCell: UITableViewCell {
         userLabel.text = clipData?.broadcasterName
         clipPlayer.clipId = (clipData?.clipId)!
         viewLabel.text = "\(clipData?.viewCount ?? 0) views"
-        gameNameLabel.text = otherClipData?.gameName
-        
-        
-        // Get image for Twitch gamer - Clean this section up
-        //TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
-        
-//        Twitch.Users.getUsers(userIds: [(clipData?.broadcasterId)!], userLoginNames: nil) { result in
-//            switch result {
-//            case .success(let getUsersFollowsData):
-//                let url = getUsersFollowsData.userData[0].profileImageURL
-//                let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-//
-//                self.userProfileImage.layer.cornerRadius = self.userProfileImage.frame.height/2
-//                self.userProfileImage.clipsToBounds = true
-//
-//                self.userProfileImage.image = UIImage(data: data!) ?? UIImage(named: "QSLogo")
-//
-//            case .failure(let data, let response, let error):
-//                print("The API call failed! Unable to determine relationship.")
-//            }
-//        }
-        
-//        Twitch.Games.getGames(gameIds: [(self.clipData?.gameId)!], gameNames: nil) { result in
-//            switch result {
-//            case .success(let getGameData):
-//                self.gameNameLabel.text = getGameData.gameData[0].name
-//            case .failure(let data, let response, let error):
-//                print("The API call failed! Unable to determine relationship.")
-//            }
-//        }
-        
-//        Twitch.Games.getGames(gameIds: [(clipData?.gameId)!], gameNames: nil) { result in
-//            switch result {
-//            case .success(let getGameData):
-//                self.gameNameLabel.text = getGameData.gameData[0].name
-//            case .failure(let data, let response, let error):
-//                print("The API call failed! Unable to determine relationship.")
-//            }
-//        }
         
         
         // Timestamp presentaton conversion

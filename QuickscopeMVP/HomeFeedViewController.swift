@@ -9,15 +9,6 @@
 import UIKit
 import SwiftTwitch
 
-struct OtherClipData {
-    var gameName: String
-}
-
-struct AllClipData {
-    var clipData: ClipData
-    var otherClipData: OtherClipData
-}
-
 class HomeFeedViewController: UITableViewController {
     
     var clips = [ClipData]() {
@@ -27,15 +18,6 @@ class HomeFeedViewController: UITableViewController {
             }
         }
     }
-    
-    var otherClips = [OtherClipData]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
-    }
-    
     
     @objc func loadNewContent() {
         tableView.reloadData()
@@ -87,18 +69,6 @@ class HomeFeedViewController: UITableViewController {
                     self.clips = [ClipData]()
                 }
             }
-            
-            Twitch.Games.getGames(gameIds: [gid], gameNames: nil) {
-                switch $0 {
-                case .success(let getGameData):
-                    let currStruct = OtherClipData(gameName: getGameData.gameData[0].name)
-                    self.otherClips.append(currStruct)
-                case .failure(let data, let response, let error):
-                    print("The API call failed! Unable to determine relationship.")
-                }
-            }
-            
-            
         }
     }
 
