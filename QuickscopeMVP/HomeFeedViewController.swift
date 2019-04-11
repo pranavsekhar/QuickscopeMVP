@@ -48,12 +48,12 @@ class HomeFeedViewController: UITableViewController {
             value: -48,
             to: Date())
         
-        let gameIds = ["32399", "493057"]
+        let gameIds = ["32399"] //, "493057"]
         
         //var pagTok = ""
         
         for gid in gameIds {
-            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 10) { //19571641
+            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) { //19571641
                 switch $0 {
                 case .success(let getVideosData):
                     self.clips += getVideosData.clipData

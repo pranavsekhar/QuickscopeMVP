@@ -8,9 +8,12 @@
 
 import UIKit
 import SwiftTwitch
+import Firebase
 
 class DiscoverPageViewController: UITableViewController {
 
+    //var ref = DatabaseReference!
+    
     var games = [GameData]() {
         didSet {
             DispatchQueue.main.async {

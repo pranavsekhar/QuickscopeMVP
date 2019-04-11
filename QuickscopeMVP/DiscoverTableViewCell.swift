@@ -12,6 +12,7 @@ import SwiftTwitch
 class DiscoverTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gameLabel: UILabel!
+    @IBOutlet weak var followButton: UIButton!
     
     var gameData: GameData? {
         didSet {
@@ -22,5 +23,12 @@ class DiscoverTableViewCell: UITableViewCell {
     public func loadGameData() {
         gameLabel.text = gameData?.name
     }
+    
+    @IBAction func followButtonTapped(_ sender: Any) {
+        followButton.setImage(UIImage(named: "FollowingIcon"), for: .normal)
+        let gameId = gameData?.id
+        print(gameId!)
+    }
+    
 
 }

@@ -472,7 +472,7 @@
             </objects>
             <point key="canvasLocation" x="2405.5999999999999" y="957.57121439280365"/>
         </scene>
-        <!--Item-->
+        <!--Discover Page View Controller-->
         <scene sceneID="oKC-X9-psS">
             <objects>
                 <tableViewController storyboardIdentifier="DiscoverPageViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xnI-6F-lDZ" customClass="DiscoverPageViewController" customModule="QuickscopeMVP" customModuleProvider="target" sceneMemberID="viewController">
@@ -503,10 +503,14 @@
                                             <rect key="frame" x="324" y="9" width="25" height="25"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" image="FollowIcon"/>
+                                            <connections>
+                                                <action selector="followButtonTapped:" destination="mkk-FN-3NJ" eventType="touchUpInside" id="ONc-UB-0EY"/>
+                                            </connections>
                                         </button>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="followButton" destination="tIy-DF-W9R" id="rsR-zr-ptf"/>
                                     <outlet property="gameLabel" destination="brJ-L9-C4x" id="JEx-W5-is8"/>
                                 </connections>
                             </tableViewCell>
@@ -516,7 +520,7 @@
                             <outlet property="delegate" destination="xnI-6F-lDZ" id="EJz-Rj-jEj"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Item" id="aLK-uJ-21j"/>
+                    <tabBarItem key="tabBarItem" systemItem="search" id="aLK-uJ-21j"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lie-Zt-CKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
