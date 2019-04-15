@@ -9,21 +9,27 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import FirebaseDatabase
+
+struct UserInformation {
+    static var userID = ""
+}
 
 class RegisterAccountViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
     @IBOutlet weak var signUpButton: UIButton!
+    
+    var ref : DatabaseReference!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         emailTextField.delegate = self
         passwordTextField.delegate = self
+        
+        ref = Database.database().reference()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -69,8 +75,16 @@ class RegisterAccountViewController: UIViewController, UITextFieldDelegate {
             if error == nil {
                 print("SUCCESSFUL SIGN UP")
                 
-//                let TutorialView = self.storyboard?.instantiateViewController(withIdentifier: "TutorialViewController")
-//                self.present(TutorialView!, animated: true, completion: nil)
+                let uID = Auth.auth().currentUser?.uid
+                UserInformation.userID = uID!
+                
+                
+                let userInfo: [String : Any] = ["uid" : uID!, "email" : self.emailTextField.text!, "gameIds" : ["00", "01"]]
+                
+                self.ref?.child("users").child(uID!).setValue(userInfo)
+                
+                let HomeFeedView = self.storyboard?.instantiateViewController(withIdentifier: "HomeFeedViewController")
+                self.present(HomeFeedView!, animated: true, completion: nil)
                 
             } else {
                 myActivityIndicator.stopAnimating()
