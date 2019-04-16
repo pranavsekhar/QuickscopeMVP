@@ -8,6 +8,9 @@
 
 import UIKit
 import SwiftTwitch
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
 
 class HomeFeedViewController: UITableViewController {
     
@@ -23,7 +26,24 @@ class HomeFeedViewController: UITableViewController {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
-
+    
+    
+    var ref = Database.database().reference()
+    var uID = Auth.auth().currentUser?.uid
+    var followedGameIds = [String]()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                let storedGameId = snap.value as! String
+                self.followedGameIds.append(storedGameId)
+            }
+        })
+        print(self.followedGameIds)
+        viewDidLoad()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,25 +68,26 @@ class HomeFeedViewController: UITableViewController {
             value: -48,
             to: Date())
         
-        let gameIds = ["32399"] //, "493057"]
-        
-        //var pagTok = ""
-        
-        for gid in gameIds {
-            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) { //19571641
-                switch $0 {
-                case .success(let getVideosData):
-                    self.clips += getVideosData.clipData
-                    self.clips.shuffle()
+        for gid in followedGameIds {
+            print("printing gid")
+            print(gid)
+            if gid.count > 2 {
+                
+                Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) { //19571641
+                    switch $0 {
+                    case .success(let getVideosData):
+                        self.clips += getVideosData.clipData
+                        self.clips.shuffle()
                     //pagTok = (getVideosData.paginationData?.token)!
-                case .failure(let data, _, _):
-                    print("The API call failed! Unable to get videos. Did you set an access token?")
-                    if let data = data,
-                        let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                        let jsonDict = jsonObject as? [String: Any] {
-                        //print(jsonDict)
+                    case .failure(let data, _, _):
+                        print("The API call failed! Unable to get videos. Did you set an access token?")
+                        if let data = data,
+                            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                            let jsonDict = jsonObject as? [String: Any] {
+                            //print(jsonDict)
+                        }
+                        self.clips = [ClipData]()
                     }
-                    self.clips = [ClipData]()
                 }
             }
         }

@@ -17,15 +17,14 @@ class DiscoverTableViewCell: UITableViewCell {
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
     
-    var ref : DatabaseReference!
+    var ref = Database.database().reference()
+    var uID = Auth.auth().currentUser?.uid
     
     var gameData: GameData? {
         didSet {
             loadGameData()
         }
     }
-    
-    var gameIds = [""]
     
     public func loadGameData() {
         gameLabel.text = gameData?.name
@@ -34,16 +33,35 @@ class DiscoverTableViewCell: UITableViewCell {
     @IBAction func followButtonTapped(_ sender: Any) {
         followButton.setImage(UIImage(named: "FollowingIcon"), for: .normal)
         let gameId = gameData?.id
-        gameIds.append(gameId!)
         
-        //print(gameId)
-        print(gameIds)
+        self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
+            var storedGameIds = [String]()
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                let storedGameId = snap.value as! String
+                storedGameIds.append(storedGameId)
+            }
+            
+            //print(storedGameIds)
+            storedGameIds.append(gameId!)
+            
+            
+            var indicesArray: [String] = []
+            for i in 0..<storedGameIds.count {
+                indicesArray.append(String(i))
+            }
+            
+            var uploadFirebaseDict: [String: String] = [:]
+            
+            for (index, element) in indicesArray.enumerated() {
+                uploadFirebaseDict[element] = storedGameIds[index]
+            }
+            
+            //print(uploadFirebaseDict)
+            
+            self.ref.child("users").child(self.uID!).child("gameIds").updateChildValues(uploadFirebaseDict)
+        })
         
-        let uID = Auth.auth().currentUser?.uid
-        
-        let userInfo: [String : Any] = ["gameIds" : ["new value "]]
-        
-        self.ref?.child("users").child(uID!).child("gameIds").updateChildValues(userInfo)
     }
     
 

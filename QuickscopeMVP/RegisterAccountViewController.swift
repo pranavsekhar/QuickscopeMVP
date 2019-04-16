@@ -79,7 +79,7 @@ class RegisterAccountViewController: UIViewController, UITextFieldDelegate {
                 UserInformation.userID = uID!
                 
                 
-                let userInfo: [String : Any] = ["uid" : uID!, "email" : self.emailTextField.text!, "gameIds" : ["00", "01"]]
+                let userInfo: [String : Any] = ["uid" : uID!, "email" : self.emailTextField.text!, "gameIds" : ["0"]]
                 
                 self.ref?.child("users").child(uID!).setValue(userInfo)
                 

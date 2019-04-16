@@ -8,13 +8,8 @@
 
 import UIKit
 import SwiftTwitch
-import Firebase
-import FirebaseDatabase
-import FirebaseAuth
 
 class DiscoverPageViewController: UITableViewController {
-    
-    var ref : DatabaseReference!
     
     var games = [GameData]() {
         didSet {
@@ -24,26 +19,8 @@ class DiscoverPageViewController: UITableViewController {
         }
     }
     
-    @objc public func saveFollowed() {
-        print("wssup tho")
-        let uID = Auth.auth().currentUser?.uid
-        
-        let userInfo: [String : Any] = ["gameIds" : ["new value "]]
-        
-        //self.ref?.child("users").child(uID!).child("gameIds").updateChildValues(userInfo)
-        self.ref?.child("users").child(uID!).child("gameIds").setValue(["gameIds" : ["stopwatchString"]])
-
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let uID = Auth.auth().currentUser?.uid
-        
-        let userInfo: [String : Any] = ["gameIds" : ["new value "]]
-        
-        //self.ref?.child("users").child(uID!).child("gameIds").updateChildValues(userInfo)
-        self.ref?.child("users").child(uID!).child("gameIds")
         
         let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 38, height: 38))
         imageView.contentMode = .scaleAspectFit
@@ -52,12 +29,7 @@ class DiscoverPageViewController: UITableViewController {
         navigationItem.titleView = imageView
         
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "DarkBG")!)
-        
-        let rightBarButtonItem = UIBarButtonItem.init(image: UIImage(named: "OKIcon"), style: .done, target: self, action: #selector(saveFollowed))
-        
-        self.navigationItem.rightBarButtonItem = rightBarButtonItem
 
-        
         TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
         
         Twitch.Games.getTopGames(first: 50) {
