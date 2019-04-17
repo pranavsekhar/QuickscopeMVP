@@ -14,7 +14,17 @@ import FirebaseDatabase
 
 class HomeFeedViewController: UITableViewController {
     
+    var limit = 3
+    
     var clips = [ClipData]() {
+        didSet {
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        }
+    }
+    
+    var clipsToLoad = [ClipData]() {
         didSet {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
@@ -32,23 +42,9 @@ class HomeFeedViewController: UITableViewController {
     
     var followedGameIds = [String]()
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
-//            for child in snapshot.children {
-//                let snap = child as! DataSnapshot
-//                let storedGameId = snap.value as! String
-//                self.followedGameIds.append(storedGameId)
-//            }
-//        })
-//        viewDidLoad()
-//    }
-    
-    
     override func viewDidAppear(_ animated: Bool) {
-        //print(uID)
-        //self.followedGameIds.removeAll()
-        if uID != nil {
-            print(uID)
+        if uID != nil { //Grab Game Ids
+            //print(uID)
             self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
@@ -61,9 +57,7 @@ class HomeFeedViewController: UITableViewController {
             print(self.followedGameIds)
         }
         
-        // Adding here, remove if neccessary:
-        
-        
+        // Populate
         // Twitch Clips Integration:
         TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
         
@@ -73,28 +67,28 @@ class HomeFeedViewController: UITableViewController {
             to: Date())
         
         for gid in followedGameIds {
-            self.clips = [ClipData]() //adding this here to prevent overlap
-            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) {
+            self.clips = [ClipData]() //prevent duplicate clips
+            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 20) {
                 switch $0 {
                 case .success(let getVideosData):
-                    self.clips += getVideosData.clipData
+                    self.clips += getVideosData.clipData // key line
                     self.clips.shuffle()
+                    //initial population
+                    if self.clipsToLoad.count == 0 {
+                        self.clipsToLoad.append(self.clips[0])
+                    }
+                    
                 case .failure(let data, _, _):
                     print("The API call failed! Unable to get videos. Did you set an access token?")
                     if let data = data,
                         let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
                         let jsonDict = jsonObject as? [String: Any] {
-                        //print(jsonDict)
+                            //print(jsonDict)
                     }
                     self.clips = [ClipData]()
                 }
             }
-            
         }
-        
-        
-        
-        
     }
     
     override func viewDidLoad() {
@@ -110,45 +104,15 @@ class HomeFeedViewController: UITableViewController {
         let image = UIImage(named: "QSLogo_Small")
         imageView.image = image
         navigationItem.titleView = imageView
-        
+
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "DarkBG")!)
         
-//        // Twitch Clips Integration:
-//        TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
-//
-//        let startedAtDate = Calendar.current.date(
-//            byAdding: .hour,
-//            value: -48,
-//            to: Date())
-//
-//        for gid in followedGameIds {
-//
-//            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) {
-//                switch $0 {
-//                case .success(let getVideosData):
-//                    self.clips += getVideosData.clipData
-//                    self.clips.shuffle()
-//                case .failure(let data, _, _):
-//                    print("The API call failed! Unable to get videos. Did you set an access token?")
-//                    if let data = data,
-//                        let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-//                        let jsonDict = jsonObject as? [String: Any] {
-//                        //print(jsonDict)
-//                    }
-//                    self.clips = [ClipData]()
-//                }
-//            }
-//
-//        }
+        self.tableView.tableFooterView = UIView(frame: .zero)
+
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return clips.count
-    }
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let videoData = clips[indexPath.row]
-        //UIApplication.shared.openURL(videoData.clipURL)
+        return clipsToLoad.count
     }
     
     /// Retrieve a TwitchClipTableViewCell with the reuse identifier "ClipCell"
@@ -157,7 +121,39 @@ class HomeFeedViewController: UITableViewController {
             let clipCell = cell as? TwitchClipTableViewCell else {
                 fatalError("Unable to dequeue a TwitchClipTableViewCell!")
         }
-        clipCell.clipData = clips[indexPath.row]
+        clipCell.clipData = clipsToLoad[indexPath.row]
         return clipCell
     }
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let size = scrollView.contentSize
+        let inset = scrollView.contentInset
+        let y = offset.y + bounds.size.height - inset.bottom
+        let h = size.height
+        let reload_distance:CGFloat = 10.0
+        if y > (h + reload_distance) {
+            print("load more rows")
+            
+            
+            if clipsToLoad.count < clips.count - limit {
+                // we need to bring more records as there are some pending records available
+                var index = clipsToLoad.count
+                limit = index + 3
+                while index < limit {
+                    clipsToLoad.append(clips[index])
+                    index = index + 1
+                }
+                self.perform(#selector(loadMore), with: nil, afterDelay: 1.0)
+            }
+            
+            
+        }
+    }
+    
+    @objc func loadMore() {
+        self.tableView.reloadData()
+    }
+
 }

@@ -16,6 +16,7 @@ class DiscoverTableViewCell: UITableViewCell {
 
     @IBOutlet weak var gameLabel: UILabel!
     @IBOutlet weak var followButton: UIButton!
+    @IBOutlet weak var gameThumbnail: UIImageView!
     
     var ref = Database.database().reference()
     var uID = Auth.auth().currentUser?.uid
@@ -28,6 +29,18 @@ class DiscoverTableViewCell: UITableViewCell {
     
     public func loadGameData() {
         gameLabel.text = gameData?.name
+        var rawUrl = gameData?.boxArtURLString
+        let rawUrl1 = rawUrl!.replacingOccurrences(of: "{width}", with: "100")
+        let rawUrl2 = rawUrl1.replacingOccurrences(of: "{height}", with: "100")
+        
+        let url = URL.init(string: rawUrl2)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+
+        self.gameThumbnail.layer.cornerRadius = self.gameThumbnail.frame.height/2
+        self.gameThumbnail.clipsToBounds = true
+
+        self.gameThumbnail.image = UIImage(data: data!)
+        
     }
     
     @IBAction func followButtonTapped(_ sender: Any) {

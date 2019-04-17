@@ -61,8 +61,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             Auth.auth().signIn(withEmail: self.emailTextField.text!, password: self.passwordTextField.text!) { (user, error) in
                 if error == nil {
                     print("SUCCESSFUL LOGIN")
-                    //let HomeTabControllerView = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabController")
-                    //self.present(HomeTabControllerView!, animated: true, completion: nil)
+                    let HomeTabBar = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController")
+                    self.present(HomeTabBar!, animated: true, completion: nil)
                 } else {
                     myActivityIndicator.stopAnimating()
                     myActivityIndicator.removeFromSuperview()

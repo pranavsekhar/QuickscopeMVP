@@ -62,5 +62,26 @@ class TwitchClipTableViewCell: UITableViewCell {
         dateLabel.text = finalDateString
         
         
+//        // Get image for Twitch gamer - Clean this section up
+//        TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
+//        Twitch.Users.getUsers(userIds: [(clipData?.broadcasterId)!], userLoginNames: nil) { result in
+//            switch result {
+//            case .success(let getUsersFollowsData):
+//                /* If the total = 1, we know that user1 is following user2
+//                 as it is documented in the Twitch API docs. */
+//                print(getUsersFollowsData.userData[0].profileImageURL)
+//                let url = getUsersFollowsData.userData[0].profileImageURL
+//                let data = try? Data(contentsOf: url) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+//
+//                self.userProfileImage.layer.cornerRadius = self.userProfileImage.frame.height/2
+//                self.userProfileImage.clipsToBounds = true
+//
+//                self.userProfileImage.image = UIImage(data: data!)
+//            case .failure(let data, let response, let error):
+//                print("The API call failed! Unable to determine relationship.")
+//            }
+//        }
+        
+        
     }
 }

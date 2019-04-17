@@ -495,7 +495,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="[Game Label]" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brJ-L9-C4x">
-                                            <rect key="frame" x="16" y="11" width="281" height="21"/>
+                                            <rect key="frame" x="83" y="11" width="214" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="OpenSans-Regular" family="Open Sans" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -509,11 +509,16 @@
                                                 <action selector="followButtonTapped:" destination="mkk-FN-3NJ" eventType="touchUpInside" id="ONc-UB-0EY"/>
                                             </connections>
                                         </button>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="QSLogo" translatesAutoresizingMaskIntoConstraints="NO" id="o76-WI-rHa">
+                                            <rect key="frame" x="9" y="2" width="39" height="39"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="followButton" destination="tIy-DF-W9R" id="rsR-zr-ptf"/>
                                     <outlet property="gameLabel" destination="brJ-L9-C4x" id="JEx-W5-is8"/>
+                                    <outlet property="gameThumbnail" destination="o76-WI-rHa" id="PcL-zd-wOP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -526,7 +531,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lie-Zt-CKb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4279" y="1725"/>
+            <point key="canvasLocation" x="4277.6000000000004" y="1724.8875562218891"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="wmr-7T-jG9">

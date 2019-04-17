@@ -11,6 +11,8 @@ import SwiftTwitch
 
 class DiscoverPageViewController: UITableViewController {
     
+    var limit = 3
+    
     var games = [GameData]() {
         didSet {
             DispatchQueue.main.async {
@@ -29,6 +31,8 @@ class DiscoverPageViewController: UITableViewController {
         navigationItem.titleView = imageView
         
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "DarkBG")!)
+        
+        self.tableView.separatorStyle = .none
 
         TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
         
