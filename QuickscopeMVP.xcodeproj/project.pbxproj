@@ -12,6 +12,7 @@
 		471FDB892256DEF400F85CAA /* TwitchPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471FDB882256DEF400F85CAA /* TwitchPlayerViewController.swift */; };
 		47475132225EBCB100EF288E /* DiscoverPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47475131225EBCB100EF288E /* DiscoverPageViewController.swift */; };
 		47475134225EF2C300EF288E /* DiscoverTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47475133225EF2C300EF288E /* DiscoverTableViewCell.swift */; };
+		474751362266AA5B00EF288E /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 474751352266AA5B00EF288E /* HomeTabBarController.swift */; };
 		4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCF92253E9AA004A03B5 /* AppDelegate.swift */; };
 		4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */; };
 		4795CCFF2253E9AA004A03B5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4795CCFD2253E9AA004A03B5 /* Main.storyboard */; };
@@ -40,6 +41,7 @@
 		471FDB882256DEF400F85CAA /* TwitchPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwitchPlayerViewController.swift; sourceTree = "<group>"; };
 		47475131225EBCB100EF288E /* DiscoverPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverPageViewController.swift; sourceTree = "<group>"; };
 		47475133225EF2C300EF288E /* DiscoverTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoverTableViewCell.swift; sourceTree = "<group>"; };
+		474751352266AA5B00EF288E /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		4795CCF62253E9AA004A03B5 /* QuickscopeMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QuickscopeMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4795CCF92253E9AA004A03B5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -100,6 +102,7 @@
 				4795CCF92253E9AA004A03B5 /* AppDelegate.swift */,
 				4795CCFB2253E9AA004A03B5 /* LoginViewController.swift */,
 				4795CCFD2253E9AA004A03B5 /* Main.storyboard */,
+				474751352266AA5B00EF288E /* HomeTabBarController.swift */,
 				47475131225EBCB100EF288E /* DiscoverPageViewController.swift */,
 				471FDB802256C3E300F85CAA /* HomeFeedViewController.swift */,
 				4795CD39225570C9004A03B5 /* RootNavigationViewController.swift */,
@@ -320,6 +323,7 @@
 				4795CCFC2253E9AA004A03B5 /* LoginViewController.swift in Sources */,
 				47475134225EF2C300EF288E /* DiscoverTableViewCell.swift in Sources */,
 				4795CCFA2253E9AA004A03B5 /* AppDelegate.swift in Sources */,
+				474751362266AA5B00EF288E /* HomeTabBarController.swift in Sources */,
 				471FDB892256DEF400F85CAA /* TwitchPlayerViewController.swift in Sources */,
 				47475132225EBCB100EF288E /* DiscoverPageViewController.swift in Sources */,
 				4795CD382255613D004A03B5 /* RegisterAccountViewController.swift in Sources */,

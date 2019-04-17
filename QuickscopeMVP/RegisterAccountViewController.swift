@@ -11,10 +11,6 @@ import Firebase
 import FirebaseAuth
 import FirebaseDatabase
 
-struct UserInformation {
-    static var userID = ""
-}
-
 class RegisterAccountViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var emailTextField: UITextField!
@@ -73,18 +69,18 @@ class RegisterAccountViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (user, error) in
             
             if error == nil {
-                print("SUCCESSFUL SIGN UP")
                 
-                let uID = Auth.auth().currentUser?.uid
-                UserInformation.userID = uID!
+                //let uID = Auth.auth().currentUser?.uid
+                let uID = user?.user.uid
                 
-                
-                let userInfo: [String : Any] = ["uid" : uID!, "email" : self.emailTextField.text!, "gameIds" : ["0"]]
+                let userInfo: [String : Any] = ["uid" : uID!, "email" : self.emailTextField.text!]//, "gameIds" : ["0"]]
                 
                 self.ref?.child("users").child(uID!).setValue(userInfo)
                 
-                let HomeFeedView = self.storyboard?.instantiateViewController(withIdentifier: "HomeFeedViewController")
-                self.present(HomeFeedView!, animated: true, completion: nil)
+                print("SUCCESSFUL SIGN UP")
+                
+                let HomeTabBar = self.storyboard?.instantiateViewController(withIdentifier: "HomeTabBarController")
+                self.present(HomeTabBar!, animated: true, completion: nil)
                 
             } else {
                 myActivityIndicator.stopAnimating()

@@ -57,8 +57,6 @@ class DiscoverTableViewCell: UITableViewCell {
                 uploadFirebaseDict[element] = storedGameIds[index]
             }
             
-            //print(uploadFirebaseDict)
-            
             self.ref.child("users").child(self.uID!).child("gameIds").updateChildValues(uploadFirebaseDict)
         })
         

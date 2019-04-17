@@ -21,27 +21,80 @@ class HomeFeedViewController: UITableViewController {
             }
         }
     }
-    
+
     @objc func loadNewContent() {
         tableView.reloadData()
         refreshControl?.endRefreshing()
     }
     
-    
     var ref = Database.database().reference()
     var uID = Auth.auth().currentUser?.uid
+    
     var followedGameIds = [String]()
     
-    override func viewWillAppear(_ animated: Bool) {
-        self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                let storedGameId = snap.value as! String
-                self.followedGameIds.append(storedGameId)
+//    override func viewWillAppear(_ animated: Bool) {
+//        self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
+//            for child in snapshot.children {
+//                let snap = child as! DataSnapshot
+//                let storedGameId = snap.value as! String
+//                self.followedGameIds.append(storedGameId)
+//            }
+//        })
+//        viewDidLoad()
+//    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //print(uID)
+        //self.followedGameIds.removeAll()
+        if uID != nil {
+            print(uID)
+            self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    let storedGameId = snap.value as! String
+                    if !self.followedGameIds.contains(storedGameId) {
+                        self.followedGameIds.append(storedGameId)
+                    }
+                }
+            })
+            print(self.followedGameIds)
+        }
+        
+        // Adding here, remove if neccessary:
+        
+        
+        // Twitch Clips Integration:
+        TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
+        
+        let startedAtDate = Calendar.current.date(
+            byAdding: .hour,
+            value: -48,
+            to: Date())
+        
+        for gid in followedGameIds {
+            self.clips = [ClipData]() //adding this here to prevent overlap
+            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) {
+                switch $0 {
+                case .success(let getVideosData):
+                    self.clips += getVideosData.clipData
+                    self.clips.shuffle()
+                case .failure(let data, _, _):
+                    print("The API call failed! Unable to get videos. Did you set an access token?")
+                    if let data = data,
+                        let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+                        let jsonDict = jsonObject as? [String: Any] {
+                        //print(jsonDict)
+                    }
+                    self.clips = [ClipData]()
+                }
             }
-        })
-        print(self.followedGameIds)
-        viewDidLoad()
+            
+        }
+        
+        
+        
+        
     }
     
     override func viewDidLoad() {
@@ -60,37 +113,33 @@ class HomeFeedViewController: UITableViewController {
         
         self.tableView.backgroundView = UIImageView(image: UIImage(named: "DarkBG")!)
         
-        // Twitch Clips Integration:
-        TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
-        
-        let startedAtDate = Calendar.current.date(
-            byAdding: .hour,
-            value: -48,
-            to: Date())
-        
-        for gid in followedGameIds {
-            print("printing gid")
-            print(gid)
-            if gid.count > 2 {
-                
-                Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) { //19571641
-                    switch $0 {
-                    case .success(let getVideosData):
-                        self.clips += getVideosData.clipData
-                        self.clips.shuffle()
-                    //pagTok = (getVideosData.paginationData?.token)!
-                    case .failure(let data, _, _):
-                        print("The API call failed! Unable to get videos. Did you set an access token?")
-                        if let data = data,
-                            let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-                            let jsonDict = jsonObject as? [String: Any] {
-                            //print(jsonDict)
-                        }
-                        self.clips = [ClipData]()
-                    }
-                }
-            }
-        }
+//        // Twitch Clips Integration:
+//        TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
+//
+//        let startedAtDate = Calendar.current.date(
+//            byAdding: .hour,
+//            value: -48,
+//            to: Date())
+//
+//        for gid in followedGameIds {
+//
+//            Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 3) {
+//                switch $0 {
+//                case .success(let getVideosData):
+//                    self.clips += getVideosData.clipData
+//                    self.clips.shuffle()
+//                case .failure(let data, _, _):
+//                    print("The API call failed! Unable to get videos. Did you set an access token?")
+//                    if let data = data,
+//                        let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
+//                        let jsonDict = jsonObject as? [String: Any] {
+//                        //print(jsonDict)
+//                    }
+//                    self.clips = [ClipData]()
+//                }
+//            }
+//
+//        }
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
