@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "88FA21D7C7E94E4A1BFBAB2130CFD9E6"
-               BlueprintName = "SwiftTwitch"
+               BlueprintIdentifier = "A87782F95FAA11479802BE2E4023F23E"
+               BlueprintName = "Regift"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "SwiftTwitch.framework">
+               BuildableName = "Regift.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

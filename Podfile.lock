@@ -70,6 +70,7 @@ PODS:
     - nanopb/encode (= 0.3.901)
   - nanopb/decode (0.3.901)
   - nanopb/encode (0.3.901)
+  - Regift (1.5.0)
   - SwiftTwitch (0.1.0):
     - Marshal (~> 1.2.7)
   - TwitchPlayer (0.1.1)
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - Firebase/Core
   - Firebase/Database
   - FirebaseUI/Auth
+  - Regift
   - SwiftTwitch
   - TwitchPlayer
 
@@ -97,6 +99,7 @@ SPEC REPOS:
     - leveldb-library
     - Marshal
     - nanopb
+    - Regift
     - SwiftTwitch
     - TwitchPlayer
 
@@ -115,9 +118,10 @@ SPEC CHECKSUMS:
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
   Marshal: ef480864a6af10a63f67be7e55bb5d8fe67a16d9
   nanopb: 2901f78ea1b7b4015c860c2fdd1ea2fee1a18d48
+  Regift: d097afd401021f4f42b102ee125ceeb125a38caf
   SwiftTwitch: 40957abccac5d6d40d8e047224178364ebbaf20c
   TwitchPlayer: 8cc661c62aca88f7a2a4cecfca6bf71ea06a4e7d
 
-PODFILE CHECKSUM: 4d0849d105408154d9005e1cd5ff625fb046db35
+PODFILE CHECKSUM: 31d2ee112a043101e2d0f3f82e5022bf00fa0147
 
 COCOAPODS: 1.6.0

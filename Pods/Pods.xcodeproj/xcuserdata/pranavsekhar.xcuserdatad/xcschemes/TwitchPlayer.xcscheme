@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7DC77BB7A94C750A94907BF03DEAED84"
+               BlueprintIdentifier = "AB137C0C620BD26944DEBA06CBD87A11"
                BlueprintName = "TwitchPlayer"
                ReferencedContainer = "container:Pods.xcodeproj"
                BuildableName = "TwitchPlayer.framework">

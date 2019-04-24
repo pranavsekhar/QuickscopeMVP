@@ -12,5 +12,6 @@ target 'QuickscopeMVP' do
   pod 'Firebase/Database'
   pod 'SwiftTwitch'
   pod 'TwitchPlayer'
+  pod 'Regift'
 
 end

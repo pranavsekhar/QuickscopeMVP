@@ -11,6 +11,7 @@ import SwiftTwitch
 import Firebase
 import FirebaseAuth
 import FirebaseDatabase
+import Regift
 
 class HomeFeedViewController: UITableViewController {
     
@@ -43,6 +44,7 @@ class HomeFeedViewController: UITableViewController {
     var followedGameIds = [String]()
     
     override func viewDidAppear(_ animated: Bool) {
+        
         if self.uID != nil { //Grab Game Ids
             //print(uID)
             self.ref.child("users").child(self.uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
@@ -76,6 +78,7 @@ class HomeFeedViewController: UITableViewController {
                     //initial population
                     if self.clipsToLoad.count == 0 {
                         self.clipsToLoad.append(self.clips[0])
+                        print(self.clips[0].clipURL)
                         self.clipsToLoad.append(self.clips[1])
                     }
                     
@@ -177,6 +180,9 @@ class HomeFeedViewController: UITableViewController {
         clipCell.userLabel.text = clipCell.clipData?.broadcasterName
         clipCell.clipPlayer.clipId = (clipCell.clipData?.clipId)!
         clipCell.viewLabel.text = "\(clipCell.clipData?.viewCount ?? 0) views"
+        
+        clipCell.layer.shouldRasterize = true
+        clipCell.layer.rasterizationScale = UIScreen.main.scale
         
         return clipCell
     }
