@@ -15,7 +15,10 @@ import Regift
 
 class HomeFeedViewController: UITableViewController {
     
-    var limit = 3
+    var nextVideoButton = UIButton()
+    var rowVar = 0
+    
+    var limit = 1 // 3
     
     var clips = [ClipData]() {
         didSet {
@@ -78,8 +81,7 @@ class HomeFeedViewController: UITableViewController {
                     //initial population
                     if self.clipsToLoad.count == 0 {
                         self.clipsToLoad.append(self.clips[0])
-                        print(self.clips[0].clipURL)
-                        self.clipsToLoad.append(self.clips[1])
+                        //self.clipsToLoad.append(self.clips[1])
                     }
                     
                 case .failure(let data, _, _):
@@ -114,6 +116,25 @@ class HomeFeedViewController: UITableViewController {
         
         //Check if this line is needed later:
         self.tableView.tableFooterView = UIView(frame: .zero)
+        
+        let finishButton = UIButton(type: .system)
+        finishButton.frame = CGRect(origin: CGPoint (x: 94, y: 500), size : CGSize(width: 145, height: 60))
+        finishButton.center.x = self.view.center.x
+        finishButton.center.y = CGFloat(470)
+        let img = UIImage(named: "NextClip")
+        finishButton.setBackgroundImage(img, for: .normal)
+        finishButton.addTarget(self, action: #selector(finishSessionTouched), for: .touchUpInside)
+        self.view.addSubview(finishButton)
+    }
+    
+    @objc func finishSessionTouched(sender:UIButton!) {
+        print("hey there")
+        
+        if rowVar < clipsToLoad.count-1 {
+            tableView.scrollToRow(at: NSIndexPath(row: rowVar+1, section: 0) as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
+            rowVar += 1
+        }
+        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -227,57 +248,4 @@ class HomeFeedViewController: UITableViewController {
         }
         task.resume()
     }
-
 }
-
-
-
-
-
-//if uID != nil { //Grab Game Ids
-//    //print(uID)
-//    self.ref.child("users").child(uID!).child("gameIds").observeSingleEvent(of: .value, with: { snapshot in
-//        for child in snapshot.children {
-//            let snap = child as! DataSnapshot
-//            let storedGameId = snap.value as! String
-//            if !self.followedGameIds.contains(storedGameId) {
-//                self.followedGameIds.append(storedGameId)
-//            }
-//        }
-//    })
-//    print(self.followedGameIds)
-//}
-//
-//// Populate
-//// Twitch Clips Integration:
-//TwitchTokenManager.shared.accessToken = "wx5au1mej4255hr2jrldi1vtw9gzt3"
-//
-//let startedAtDate = Calendar.current.date(
-//    byAdding: .hour,
-//    value: -48,
-//    to: Date())
-//
-//for gid in followedGameIds {
-//    self.clips = [ClipData]() //prevent duplicate clips
-//    Twitch.Clips.getClips(broadcasterId: nil, gameId: gid, clipIds: nil, startedAt: startedAtDate, endedAt: Date(), first: 20) {
-//        switch $0 {
-//        case .success(let getVideosData):
-//            self.clips += getVideosData.clipData // key line
-//            self.clips.shuffle()
-//            //initial population
-//            if self.clipsToLoad.count == 0 {
-//                self.clipsToLoad.append(self.clips[0])
-//                self.clipsToLoad.append(self.clips[1])
-//            }
-//
-//        case .failure(let data, _, _):
-//            print("The API call failed! Unable to get videos. Did you set an access token?")
-//            if let data = data,
-//                let jsonObject = try? JSONSerialization.jsonObject(with: data, options: .allowFragments),
-//                let jsonDict = jsonObject as? [String: Any] {
-//                //print(jsonDict)
-//            }
-//            self.clips = [ClipData]()
-//        }
-//    }
-//}
