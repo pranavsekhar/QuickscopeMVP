@@ -15,9 +15,6 @@ import Regift
 
 class HomeFeedViewController: UITableViewController {
     
-    var nextVideoButton = UIButton()
-    var rowVar = 0
-    
     var limit = 1 // 3
     
     var clips = [ClipData]() {
@@ -116,25 +113,6 @@ class HomeFeedViewController: UITableViewController {
         
         //Check if this line is needed later:
         self.tableView.tableFooterView = UIView(frame: .zero)
-        
-        let finishButton = UIButton(type: .system)
-        finishButton.frame = CGRect(origin: CGPoint (x: 94, y: 500), size : CGSize(width: 145, height: 60))
-        finishButton.center.x = self.view.center.x
-        finishButton.center.y = CGFloat(470)
-        let img = UIImage(named: "NextClip")
-        finishButton.setBackgroundImage(img, for: .normal)
-        finishButton.addTarget(self, action: #selector(finishSessionTouched), for: .touchUpInside)
-        self.view.addSubview(finishButton)
-    }
-    
-    @objc func finishSessionTouched(sender:UIButton!) {
-        print("hey there")
-        
-        if rowVar < clipsToLoad.count-1 {
-            tableView.scrollToRow(at: NSIndexPath(row: rowVar+1, section: 0) as IndexPath, at: UITableView.ScrollPosition.top, animated: true)
-            rowVar += 1
-        }
-        
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -202,6 +180,7 @@ class HomeFeedViewController: UITableViewController {
         clipCell.clipPlayer.clipId = (clipCell.clipData?.clipId)!
         clipCell.viewLabel.text = "\(clipCell.clipData?.viewCount ?? 0) views"
         
+        // For smoother scrolling apparently:
         clipCell.layer.shouldRasterize = true
         clipCell.layer.rasterizationScale = UIScreen.main.scale
         
@@ -248,4 +227,5 @@ class HomeFeedViewController: UITableViewController {
         }
         task.resume()
     }
+
 }
